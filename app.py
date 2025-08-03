@@ -7,7 +7,7 @@ def generate_diary_and_image(country, environment):
     openai.api_key = st.secrets["OPENAI_API_KEY"]
     
     # 1-1. GPT-4로 일기 생성
-    diary_prompt = (ss
+    diary_prompt = (
         f"너는 {country}의 {environment}에 사는 창의적인 어린이야. "
         f"이 조건에 맞는 일기를 한국어로 10문장 이내로 써줘. "
         f"어린이의 시선과 감정이 잘 드러나게 해줘."
