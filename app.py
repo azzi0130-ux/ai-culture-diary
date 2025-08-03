@@ -45,7 +45,8 @@ st.title('AI 세계 문화 탐험 일기')
 
 # 여기에 본인의 실제 API 키를 큰따옴표 안에 넣으세요!!!
 # 이 방법은 보안에 완벽하지는 않지만, 지금은 '작동'이 가장 중요합니다.
-my_api_key = "import streamlit as st
+# 완벽하게 수리된 코드 (이 한 줄을 붙여넣으세요!)
+my_api_key = "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"
 import openai
 
 # --- 1. AI 호출을 위한 핵심 함수 ---
