@@ -44,7 +44,7 @@ def generate_diary_and_image(country, environment, api_key):
 st.title('AI 세계 문화 탐험 일기')
 
 # 여기에 본인의 '새로 발급받은' 실제 API 키를 큰따옴표 안에 넣으세요!!!
-my_api_key = "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"
+my_api_key = "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"
 country = st.selectbox('나라를 선택하세요', ['이집트', '페루', '브라질', '몽골'])
 environment = st.selectbox('자연환경을 선택하세요', ['사막', '고산지대', '열대 우림', '초원'])
 
