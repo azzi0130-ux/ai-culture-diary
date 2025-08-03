@@ -45,12 +45,11 @@ st.title('AI 세계 문화 탐험 일기')
 
 # 여기에 본인의 '새로 발급받은' 실제 API 키를 큰따옴표 안에 넣으세요!!!
 my_api_key = "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"
-
 country = st.selectbox('나라를 선택하세요', ['이집트', '페루', '브라질', '몽골'])
 environment = st.selectbox('자연환경을 선택하세요', ['사막', '고산지대', '열대 우림', '초원'])
 
 if st.button('일기 생성하기'):
-    with st.spinner('AI가 열심히 일기를 쓰고 그림을 그리는 중입니다... 잠시만 기다려주세요!'):
+    with st.spinner('AI가 열심히 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일기를 쓰고 그림을 그리는 중입니다... 잠시만 기다려주세요!'):
         diary, image = generate_diary_and_image(country, environment, my_api_key)
         
         st.subheader('AI가 만든 그림일기')
