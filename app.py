@@ -46,7 +46,7 @@ st.title('AI 세계 문화 탐험 일기')
 
 # 여기에 당신의 '새롭고 유효한' 실제 API 키를 큰따옴표 안에 넣으세요!!!
 # 이것이 우리의 마지막 희망입니다.
-my_api_key = "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"
+my_api_key = "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"
 
 country = st.selectbox('나라를 선택하세요', ['이집트', '페루', '브라질', '몽골'])
 environment = st.selectbox('자연환경을 선택하세요', ['사막', '고산지대', '열대 우림', '초원'])
