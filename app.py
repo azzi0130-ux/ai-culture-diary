@@ -1,17 +1,18 @@
 import streamlit as st
 import openai
 
-# --- 1. AI 함수 (비밀 금고에서 읽어옵니다) ---
-def generate_diary_and_image(country, environment):
-    # 이 마법의 한 줄은 Streamlit에게 방금 만든 '비밀 금고'에서 키를 가져오라고 지시합니다.
-    openai.api_key = st.secrets["OPENAI_API_KEY"]
+# --- 1. AI 호출을 위한 핵심 함수 ---
+def generate_diary_and_image(country, environment, api_key):
+    # 이 함수는 전달받은 api_key를 사용합니다.
+    openai.api_key = api_key
     
-    # ... (함수의 나머지 부분은 이전과 정확히 동일합니다) ...
+    # 1-1. GPT-4로 일기 생성
     diary_prompt = (
         f"너는 {country}의 {environment}에 사는 창의적인 어린이야. "
         f"이 조건에 맞는 일기를 한국어로 10문장 이내로 써줘. "
         f"어린이의 시선과 감정이 잘 드러나게 해줘."
-    )    
+    )
+    
     diary_response = openai.chat.completions.create(
         model="gpt-4",
         messages=[
@@ -23,10 +24,12 @@ def generate_diary_and_image(country, environment):
     )
     diary_text = diary_response.choices[0].message.content.strip()
 
+    # 1-2. DALL-E 3로 그림 생성
     image_prompt = (
         f"{country}의 {environment}에서 사는 어린이의 일기 내용을 바탕으로 한, 따뜻하고 감성적인 그림을 그려줘. "
         f"일러스트레이션 스타일로."
-    )    
+    )
+    
     image_response = openai.images.generate(
         model="dall-e-3",
         prompt=image_prompt,
@@ -37,17 +40,21 @@ def generate_diary_and_image(country, environment):
 
     return diary_text, image_url
 
-# --- 2. 웹페이지 레이아웃 ---
+# --- 2. 웹페이지 화면 구성 ---
 
 st.title('AI 세계 문화 탐험 일기')
 
-country = st.selectbox('나라를 선택하세요', ['이집트', '페루', '브라질', '몽골'])
+# 여기에 당신의 '새롭고 유효한' 실제 API 키를 큰따옴표 안에 넣으세요!!!
+# 이것이 우리의 마지막 희망입니다.
+my_api_key = "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"
+
+country = st.selectbox('나라를 선택하세요', ['이집트', '페루', '브razil', '몽골'])
 environment = st.selectbox('자연환경을 선택하세요', ['사막', '고산지대', '열대 우림', '초원'])
 
 if st.button('일기 생성하기'):
     with st.spinner('AI가 열심히 일기를 쓰고 그림을 그리는 중입니다... 잠시만 기다려주세요!'):
-        
-        diary, image = generate_diary_and_image(country, environment)
+        # 코드에 직접 넣은 my_api_key를 AI 함수에 전달합니다.
+        diary, image = generate_diary_and_image(country, environment, my_api_key)
         
         st.subheader('AI가 만든 그림일기')
         st.image(image)
